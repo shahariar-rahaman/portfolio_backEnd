@@ -10,9 +10,13 @@ const figmaData=new Schema({
         type:String,
         required:true
     },
-    image:{
+    link:{
         type:String,
         required:true
+    },
+    image:{
+        type:String,
+        required:false
     },
     project:{
         type:[String],

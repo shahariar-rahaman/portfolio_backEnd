@@ -64,12 +64,12 @@ app.post('/login',async (req,res)=>{
     const figmaData = {
       title:req.body.title,
       description:req.body.description,
+      link:req.body.link,
       image:req.body.image,
       project:req.body.project
     }
     const figmaDetails = new figma(figmaData)
     figmaDetails.save()
-  
   })
   app.get("/figmaEdit",async (req,res)=>{
     const data = await figma.find({})
@@ -82,6 +82,7 @@ app.post('/login',async (req,res)=>{
     const reactData = {
       title:req.body.title,
       description:req.body.description,
+      link:req.body.link,
       image:req.body.image,
       project:req.body.project
     }
@@ -101,6 +102,7 @@ app.post('/login',async (req,res)=>{
     const basicData = {
       title:req.body.title,
       description:req.body.description,
+      link:req.body.link,
       image:req.body.image,
       project:req.body.project
     }
