@@ -116,7 +116,9 @@ app.post('/login',async (req,res)=>{
     res.send(data)
     console.log(data)
   })
-  
+app.get("/",async (req,res)=>{
+  res.send("welcome to API")
+})
   
 //Comment Image upload
 
