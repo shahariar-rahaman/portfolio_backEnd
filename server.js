@@ -60,7 +60,15 @@ app.post('/login',async (req,res)=>{
     res.send(data)
     console.log(data)
   })
-  
+  app.delete("/blogEdit/:id",async function(req,res){
+  try{
+    const data = await blogData.findByIdAndDelete(req.params.id); 
+    res.send(data)
+  }
+  catch(err){
+
+  }
+  })
   
   app.post("/figmaEdit",(req,res)=>{
     const figmaData = {
