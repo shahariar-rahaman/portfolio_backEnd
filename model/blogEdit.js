@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const {Schema} = mongoose
 
 const blogData = new Schema({
-    name:{
+    id:{
         type:String,
         required:true
     },

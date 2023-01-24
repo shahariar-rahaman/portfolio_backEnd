@@ -39,14 +39,13 @@ app.post('/login',async (req,res)=>{
       bcrypt.compare(req.body.password, data[0].password, function(err, result) {
         if(result)
         res.send({userInfo:data[0],msg:"Login Successful"})
-        console.log("Send")
     });
     }
 
   })
   app.post("/blogEdit",(req,res)=>{
     const blogEditData = {
-      name:req.body.name,
+      id:req.body.id,
       title:req.body.title,
       description:req.body.description,
       image:req.body.image
@@ -58,7 +57,14 @@ app.post('/login',async (req,res)=>{
   app.get("/blogEdit",async (req,res)=>{
     let data = await blogData.find({})
     res.send(data)
-    console.log(data)
+  })
+  app.get("/blogEdit/:id",async (req,res)=>{
+    let data = await blogData.findById(req.params.id)
+    res.send(data)
+  })
+  app.put("/blogEdit/:id",async (req,res)=>{
+    let data = await blogData.findByIdAndUpdate(req.params.id,{id:req.body.id,title:req.body.title,description:req.body.description,image:req.body.image})
+    res.send(data);
   })
   app.delete("/blogEdit/:id",async function(req,res){
   try{
@@ -84,7 +90,6 @@ app.post('/login',async (req,res)=>{
   app.get("/figmaEdit",async (req,res)=>{
     const data = await figma.find({})
     res.send(data)
-    console.log(data)
   })
   
   
@@ -103,7 +108,6 @@ app.post('/login',async (req,res)=>{
   app.get("/reactEdit",async (req,res)=>{
     const data = await react.find({})
     res.send(data)
-    console.log(data)
   })
   
   
@@ -118,13 +122,10 @@ app.post('/login',async (req,res)=>{
     }
     const basicDetails = new basic(basicData)
     basicDetails.save()
-    console.log(basicDetails)
-  
   })
   app.get("/basic",async (req,res)=>{
     const data = await basic.find({})
     res.send(data)
-    console.log(data)
   })
 app.get("/",async (req,res)=>{
   res.send("welcome to API")
