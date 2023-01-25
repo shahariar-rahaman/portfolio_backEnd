@@ -43,10 +43,11 @@ app.post('/login',async (req,res)=>{
     }
 
   })
-  app.post("/blogEdit",(req,res)=>{
+  app.post("/blogPost",(req,res)=>{
     const blogEditData = {
       id:req.body.id,
       title:req.body.title,
+      name:req.body.name,
       description:req.body.description,
       image:req.body.image
     }
@@ -54,19 +55,19 @@ app.post('/login',async (req,res)=>{
     blog.save()
 
   })
-  app.get("/blogEdit",async (req,res)=>{
+  app.get("/blogPost",async (req,res)=>{
     let data = await blogData.find({})
     res.send(data)
   })
-  app.get("/blogEdit/:id",async (req,res)=>{
+  app.get("/blogPOst/:id",async (req,res)=>{
     let data = await blogData.findById(req.params.id)
     res.send(data)
   })
-  app.put("/blogEdit/:id",async (req,res)=>{
+  app.put("/blogPost/:id",async (req,res)=>{
     let data = await blogData.findByIdAndUpdate(req.params.id,{id:req.body.id,title:req.body.title,description:req.body.description,image:req.body.image})
     res.send(data);
   })
-  app.delete("/blogEdit/:id",async function(req,res){
+  app.delete("/blogPost/:id",async function(req,res){
   try{
     const data = await blogData.findByIdAndDelete(req.params.id); 
     res.send(data)
@@ -76,7 +77,7 @@ app.post('/login',async (req,res)=>{
   }
   })
   
-  app.post("/figmaEdit",(req,res)=>{
+  app.post("/figmaPost",(req,res)=>{
     const figmaData = {
       title:req.body.title,
       description:req.body.description,
@@ -86,14 +87,15 @@ app.post('/login',async (req,res)=>{
     }
     const figmaDetails = new figma(figmaData)
     figmaDetails.save()
+    console.log(figmaDetails)
   })
-  app.get("/figmaEdit",async (req,res)=>{
+  app.get("/figmaPost",async (req,res)=>{
     const data = await figma.find({})
     res.send(data)
   })
   
   
-  app.post("/reactEdit",(req,res)=>{
+  app.post("/reactPost",(req,res)=>{
     const reactData = {
       title:req.body.title,
       description:req.body.description,
@@ -105,14 +107,14 @@ app.post('/login',async (req,res)=>{
     reactDetails.save()
   
   })
-  app.get("/reactEdit",async (req,res)=>{
+  app.get("/reactPost",async (req,res)=>{
     const data = await react.find({})
     res.send(data)
   })
   
   
   
-  app.post("/basic",(req,res)=>{
+  app.post("/basicPost",(req,res)=>{
     const basicData = {
       title:req.body.title,
       description:req.body.description,
@@ -123,7 +125,7 @@ app.post('/login',async (req,res)=>{
     const basicDetails = new basic(basicData)
     basicDetails.save()
   })
-  app.get("/basic",async (req,res)=>{
+  app.get("/basicPost",async (req,res)=>{
     const data = await basic.find({})
     res.send(data)
   })
