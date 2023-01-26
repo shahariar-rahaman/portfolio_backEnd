@@ -31,8 +31,10 @@ app.post('/registration',async (req, res)=>{
     }
     const adminObj = new userSchema(admin)
     adminObj.save()
+    res.send({msg:"Created Successfuly"})
 });
   })
+  
 app.post('/login',async (req,res)=>{
     const data = await userSchema.find({email:req.body.email});
     if(data[0]){
@@ -53,6 +55,7 @@ app.post('/login',async (req,res)=>{
     }
     const blog = new blogData(blogEditData)
     blog.save()
+    res.send({msg:"Created Successfuly"})
 
   })
   app.get("/blogPost",async (req,res)=>{
@@ -66,6 +69,7 @@ app.post('/login',async (req,res)=>{
   app.put("/blogPost/:id",async (req,res)=>{
     let data = await blogData.findByIdAndUpdate(req.params.id,{id:req.body.id,title:req.body.title,description:req.body.description,image:req.body.image})
     res.send(data);
+
   })
   app.delete("/blogPost/:id",async function(req,res){
   try{
@@ -87,7 +91,7 @@ app.post('/login',async (req,res)=>{
     }
     const figmaDetails = new figma(figmaData)
     figmaDetails.save()
-    console.log(figmaDetails)
+    res.send({msg:"Created Successfuly"})
   })
   app.get("/figmaPost",async (req,res)=>{
     const data = await figma.find({})
@@ -105,6 +109,7 @@ app.post('/login',async (req,res)=>{
     }
     const reactDetails = new react(reactData)
     reactDetails.save()
+    res.send({msg:"Created Successfuly"})
   
   })
   app.get("/reactPost",async (req,res)=>{
@@ -124,6 +129,7 @@ app.post('/login',async (req,res)=>{
     }
     const basicDetails = new basic(basicData)
     basicDetails.save()
+    res.send({msg:"Created Successfuly"})
   })
   app.get("/basicPost",async (req,res)=>{
     const data = await basic.find({})
