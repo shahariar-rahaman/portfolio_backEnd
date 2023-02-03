@@ -31,7 +31,7 @@ app.post('/registration',async (req, res)=>{
     }
     const adminObj = new userSchema(admin)
     adminObj.save()
-    res.send({msg:"Created Successfuly"})
+    res.end()
 });
   })
   
@@ -55,7 +55,7 @@ app.post('/login',async (req,res)=>{
     }
     const blog = new blogData(blogEditData)
     blog.save()
-    res.send({msg:"Created Successfuly"})
+    res.end()
 
   })
   app.get("/blogPost",async (req,res)=>{
