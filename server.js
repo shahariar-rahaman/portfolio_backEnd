@@ -43,7 +43,8 @@ app.post('/login',async (req,res)=>{
         res.send({userInfo:data[0],msg:"Login Successful"})
     });
     }
-
+    else
+      res.send("This User Not Found")
   })
   app.post("/blogPost",(req,res)=>{
     const blogEditData = {
